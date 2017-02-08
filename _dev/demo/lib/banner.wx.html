@@ -1,0 +1,54 @@
+<style lang="less" rel="stylesheet/less">
+    .buy-items {
+        display: -webkit-flex;
+        display: flex;
+        border-bottom: 1px solid #eee;
+
+        .buy-items-label {
+            display: inline-block;
+            padding-right: 10px;
+            line-height: 80px;
+        }
+
+        .buy-items-value {
+            -webkit-flex: 1;
+            flex: 1;
+            height: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+</style>
+<template xmlns:demo="./*">
+    <button bindtap="btnTest">3456测试登录跳转</button>
+    <view class="buy-items">
+        <view class="buy-items-label">{{title}}</view>
+        <input type="text" class="buy-items-value" placeholder="items参数" bindinput="hdInput" value="{{btns.length}}"/>
+    </view>
+    <demo:toolbar btns="{{btns}}"/>
+</template>
+<script>
+    module.exports = {
+        props: ['btns', 'title','login'],
+        data: {
+            name:22,
+            items: null
+        },
+        methods: {
+            btnTest:function(_event){
+                var tv = this.getProperty('login');
+                tv.call(_event);
+            },
+            hdInput: function (_event) {
+                this.setData({items: '测试内容'});
+            }
+        }, onLoad: function () {
+            console.log(2222)
+            this.setData({
+                items: 222
+            })
+        }
+    }
+</script>

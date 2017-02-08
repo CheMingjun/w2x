@@ -1,0 +1,15 @@
+{
+  "libs": {
+    "demo": "./lib/reg.js",
+    "demo1": "./lib/reg.js"
+  },
+  "pages": [
+    "pages/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

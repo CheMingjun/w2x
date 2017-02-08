@@ -1,0 +1,51 @@
+<style lang="less" rel="stylesheet/less">
+    .abc {
+        background-color: red;
+    }
+</style>
+<template xmlns:demo="demo">
+    <button class="abc" bindtap="setBtns">{{name}}222</button>
+    <demo:banner btns="{{btns}}"  title="banner标题" :login="loginFn"/>
+</template>
+<script>
+    var util = require('../util.js');
+    module.exports = {
+        data: {
+            name: '点击添加按钮',
+            btns: [{name: '按钮1'}]
+        }, methods: {
+            loginFn: function () {
+                var btns = this.data.btns;
+                debugger;
+                this.setBtns();
+            },
+            setBtns: function () {
+//                var libs = this.libs;
+//
+//                var th = this, demoLib = this.libs['demo'];
+//                demoLib.login(function (_msg) {
+//                    //debugger;
+//                    //th.setData({name: _msg});
+//                })
+//
+//                return;
+                util.log('添加按钮');
+
+                var btns = this.data.btns;
+                btns.push({name: '按钮12'});
+                btns.push({name: '按钮12'});
+                btns.push({name: '按钮12'});
+                btns.push({name: '按钮12'});
+
+                this.setData({btns: btns});
+            }
+        }, onLoad: function () {
+            console.log('index.wx.html');
+            var th = this, demoLib = this.libs['demo'];
+            demoLib.login(function (_msg) {
+                //debugger;
+                //th.setData({name: _msg});
+            })
+        }
+    }
+</script>

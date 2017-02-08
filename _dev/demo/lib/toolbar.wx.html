@@ -1,0 +1,24 @@
+<style>
+    .tt{
+        color:red;
+        padding:50px;
+    }
+</style>
+<template>
+    <view class="tt">测试标题</view>
+    <view>
+        <button wx-for="{{btns}}" type="{{item.type}}" bindtap="btnTap">{{item.name}}</button>
+    </view>
+</template>
+<script>
+    var util = require('./util');
+    module.exports = {
+        props: ['btns'],
+        methods:{
+            btnTap:function(_e){
+                console.log(_e);
+                util.test();
+            }
+        }
+    }
+</script>
