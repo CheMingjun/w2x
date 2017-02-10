@@ -1,23 +1,40 @@
 <style lang="less" rel="stylesheet/less">
-    .abc {
+    .test-btn {
         background-color: red;
+        margin:3px;
+        color:#fff;
+        text-align:left;
     }
 </style>
 <template xmlns:demo="demo">
-    <button class="abc" bindtap="setBtns">{{name}}222</button>
-    <demo:banner btns="{{btns}}"  title="banner标题" :login="loginFn"/>
+    <block>{{name}}</block>
+    <button class="test-btn" bindtap="setBtns">测试当前页面的data变化影响子组件的行为</button>
+    <button class="test-btn" bindtap="callMethod">测试methods中方法的相互调用</button>
+    ----banner组件开始----
+    <demo:banner btns="{{btns}}" title="banner标题" :login="loginFn"/>
+    ----banner组件结束----
+    <button wx-key="uniqueItem" wx-for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx-for-item="$sku" wx-for-index="$i">
+        {{$sku}} {{$i}} test
+    </button>
 </template>
 <script>
     var util = require('../util.js');
     module.exports = {
         data: {
-            name: '点击添加按钮',
+            name: '测试变量输出',
             btns: [{name: '按钮1'}]
         }, methods: {
+            callMethod: function () {
+                var btns = this.data.btns;
+                debugger;
+                var btns = this.setBtns();
+                debugger;
+            },
             loginFn: function () {
                 var btns = this.data.btns;
                 debugger;
-                this.setBtns();
+                var btns = this.setBtns();
+                debugger;
             },
             setBtns: function () {
 //                var libs = this.libs;
@@ -29,6 +46,7 @@
 //                })
 //
 //                return;
+                debugger;
                 util.log('添加按钮');
 
                 var btns = this.data.btns;
@@ -38,9 +56,12 @@
                 btns.push({name: '按钮12'});
 
                 this.setData({btns: btns});
+
+                return btns;
             }
         }, onLoad: function () {
             console.log('index.wx.html');
+            return;
             var th = this, demoLib = this.libs['demo'];
             demoLib.login(function (_msg) {
                 //debugger;

@@ -22,7 +22,7 @@
 
 </style>
 <template xmlns:demo="./*">
-    <button bindtap="btnTest">3456测试登录跳转</button>
+    <button bindtap="btnTest">点击测试setProperty</button>
     <view class="buy-items">
         <view class="buy-items-label">{{title}}</view>
         <input type="text" class="buy-items-value" placeholder="items参数" bindinput="hdInput" value="{{btns.length}}"/>
@@ -39,7 +39,15 @@
         methods: {
             btnTest:function(_event){
                 var tv = this.getProperty('login');
-                tv.call(_event);
+                //tv.call(_event);
+//debugger;
+                var btns = this.getProperty('btns');
+                btns.push({name: '按钮12'});
+                btns.push({name: '按钮12'});
+                btns.push({name: '按钮12'});
+                btns.push({name: '按钮12'});
+
+                this.setProperty('btns',btns);
             },
             hdInput: function (_event) {
                 this.setData({items: '测试内容'});

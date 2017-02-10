@@ -1,0 +1,22 @@
+
+    <block>{{name}}</block>
+    <button class="test-btn" bindtap="_setBtns">测试当前页面的data变化影响子组件的行为</button>
+    <button class="test-btn" bindtap="_callMethod">测试methods中方法的相互调用</button>
+    ----banner组件开始----
+    <view class="_d541">
+    <button bindtap="_d541btnTest">点击测试setProperty</button>
+    <view class="buy-items">
+        <view class="buy-items-label">{{"banner标题"}}</view>
+        <input type="text" class="buy-items-value" placeholder="items参数" bindinput="_d541hdInput" value="{{btns.length}}"/>
+    </view>
+    <view class="_befe">
+    <view class="tt">测试标题</view>
+    <view>
+        <button wx:for="{{btns}}" type="{{item.type}}" bindtap="_befebtnTap">{{item.name}}</button>
+    </view>
+</view>
+</view>
+    ----banner组件结束----
+    <button wx:key="uniqueItem" wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="$sku" wx:for-index="$i">
+        {{$sku}} {{$i}} test
+    </button>

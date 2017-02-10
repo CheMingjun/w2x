@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gulp --gulpfile ./lib/gulp-file.js dev --progress --hide-modules"
   },
-  "author": "CheMingjun",
+  "author": "车明君",
   "license": "ISC",
   "bin": {},
   "dependencies": {

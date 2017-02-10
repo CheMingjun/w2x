@@ -1,0 +1,29 @@
+
+    .test-btn {
+        background-color: red;
+        margin:3px;
+        color:#fff;
+        text-align:left;
+    }
+._d541 .buy-items {
+  display: -webkit-flex;
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+._d541 .buy-items .buy-items-label {
+  display: inline-block;
+  padding-right: 10px;
+  line-height: 80px;
+}
+._d541 .buy-items .buy-items-value {
+  -webkit-flex: 1;
+  flex: 1;
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+._befe .tt {
+  color: red;
+  padding: 50px;
+}

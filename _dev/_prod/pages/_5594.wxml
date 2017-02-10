@@ -1,0 +1,9 @@
+
+    <form class="bind" bindsubmit="_submit">
+        <view class="form-group-wrap">
+            <view class="form-group">
+                <input id="J_phone" name="phone" class="input" placeholder-class="placeholder" type="text" placeholder="请输入手机号"/>
+            </view>
+        </view>
+        <button class="btn" formType="submit">下一步</button>
+    </form>

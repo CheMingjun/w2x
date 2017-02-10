@@ -55,31 +55,33 @@ W2X框架致力于以"自定义组件"的方式快速开发微信小程序，这
   ```
 reg.js的代码
 ```js
-module.exports = function (_context) {//_context为在实际使用时注入的上下文对象
-    var reg = _context.reg({//reg方法为实际注册该组件库所包含的组件、页面等
-        coms: {
-            "banner": "./banner.wx.html",//注册该组件库所包含的组件
-            "toolbar": "./toolbar.wx.html"
+var pages = {};//保存注册的页面对象
+module.exports = {
+    components: {//注册组件
+        "banner": "./banner.wx.html",
+        "toolbar": "./toolbar.wx.html"
+    },
+    pages: {//注册页面
+        './login.wx.html': function (_path) {
+            pages['login'] = _path;
         }
-        ,pages: ['./login.wx.html']//注册该组件库所提供的页面
-    });
-
-    return {
-        login: function (_fn) {//对外暴露的JS API函数
-            var lfn = function(){
-                var path = reg.pages['./login.wx.html'];
+    },
+    api: {//暴露给业务的API
+        login: function (_fn) {
+            var lfn = function () {
+                var path = pages['login'];//使用引用进行页面导航
                 wx.navigateTo({
                     url: path
                 })
             }
             wx.getStorage({
-                key:"login",
-                success: function(res) {
+                key: "login",
+                success: function (res) {
                     var dt = res.data;
-                    if(!dt){
+                    if (!dt) {
                         lfn();
                     }
-                },fail:function(){
+                }, fail: function () {
                     lfn();
                 }
             })
